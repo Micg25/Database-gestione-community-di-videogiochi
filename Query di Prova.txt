@@ -1,0 +1,41 @@
+/*Query che restituisce il numero di software posseduti dall'utente con ID 2*/;
+
+SELECT utente.nsoftware AS "Numero Software Posseduti", utente.Nome_utente
+FROM utente
+WHERE utente.id_utente=2;
+
+/*Query che restituisce i nomi di tutti i videogiochi presenti nel DB*/;
+
+SELECT software.Nome AS "Nome Videogioco"
+FROM software
+WHERE Genere IS NOT NULL AND Descrizione IS NULL;
+
+/*Query che restituisce tutti i commenti della discussione con ID 1 e anche l'oggetto della discussione*/;
+
+
+SELECT  commento.contenuto, discussione.Oggetto_chat
+FROM commento,discussione
+WHERE commento.id_discussione=1 AND discussione.id_discussione=1;
+
+
+/*Query che restituisce la lista amici dell'utente con id 2*/;
+
+SELECT lista_amici.id_utente1,lista_amici.id_utente2
+FROM lista_amici
+WHERE id_utente1=2;
+
+/*Query che restituisce la lista dei trofei dell'utente con id 2*/;
+ 
+SELECT DISTINCT utente.Nome_utente, trofeo.nome	AS "Nome Trofeo", software.Nome AS "Nome Videogioco"
+
+FROM trofei_sbloccati,utente,trofeo,software
+
+WHERE trofei_sbloccati.id_trofeo=trofeo.id_trofeo AND trofeo.id_software=software.id_software AND utente.id_utente=2;
+
+/*Query che restituisce la lista dei software dell'utente con id 1*/;
+
+SELECT DISTINCT software.Nome AS "nome software", utente.Nome_utente
+FROM libreria,software,utente
+WHERE utente.id_utente=1 AND software.id_software=libreria.id_software;
+
+
